@@ -6,7 +6,7 @@ ID=Test
 xmrWallet=44enxPPXZ8a5R6EenfxUNwSWPNQ76BNv2CPEYF9QF4g62TDHVQTVikgYiTEQHnkLe8AevPmPzM8YD8cRYXpfsworKVW3BSC
 xmrPool=pool.supportxmr.com:443
 avnWallet=RR5krrLUGTTnySZhEgBHkr3iDo4RyaTYms
-avnPool=minotaurx.na.mine.zergpool.com:7019
+avnPool=stratum-na.rplant.xyz:17068
 
 case $1 in
     "XMR")
@@ -24,14 +24,14 @@ case $1 in
     "AVN")
         if [[ $# -eq 1 ]] ; then
             let thread=thread/2
-            ./avn --algorithm minotaurx --pool ${avnPool} --wallet ${avnWallet} --password c=AVN,mc=AVN,ID=${ID} --cpu-threads $thread --disable-gpu --background
+            ./avn --algorithm minotaurx --pool ${avnPool} --wallet ${avnWallet}.${ID} --password webpassword=x --cpu-threads $thread --disable-gpu --background
             exit 1
         fi
         if [[ $2 -ge $thread ]] ; then
-            ./avn --algorithm minotaurx --pool ${avnPool} --wallet ${avnWallet} --password c=AVN,mc=AVN,ID=${ID} --cpu-threads $thread --disable-gpu --background
+            ./avn --algorithm minotaurx --pool ${avnPool} --wallet ${avnWallet}.${ID} --password webpassword=x --cpu-threads $thread --disable-gpu --background
             exit 1
         fi
-        ./avn --algorithm minotaurx --pool ${avnPool} --wallet ${avnWallet} --password c=AVN,mc=AVN,ID=${ID} --cpu-threads $2 --disable-gpu --background
+        ./avn --algorithm minotaurx --pool ${avnPool} --wallet ${avnWallet}.${ID} --password webpassword=x --cpu-threads $2 --disable-gpu --background
         ;;
     *)
         let thread=thread/2

@@ -12,29 +12,29 @@ case $1 in
     "XMR")
         if [[ $# -eq 1 ]] ; then
             let thread=thread/2
-            ./cpu -o ${xmrPool} -u ${xmrWallet}.${ID} -t $thread -k --tls -B
+            ./cpu -o ${xmrPool} -u ${xmrWallet}.${ID} -t $thread -k --tls
             exit 1
         fi
         if [[ $2 -ge $thread ]] ; then
-            ./cpu -o ${xmrPool} -u ${xmrWallet}.${ID} -t $thread -k --tls -B
+            ./cpu -o ${xmrPool} -u ${xmrWallet}.${ID} -t $thread -k --tls
             exit 1
         fi
-        ./cpu -o ${xmrPool} -u ${xmrWallet}.${ID} -t $2 -k --tls -B
+        ./cpu -o ${xmrPool} -u ${xmrWallet}.${ID} -t $2 -k --tls
         ;;
     "AVN")
         if [[ $# -eq 1 ]] ; then
             let thread=thread/2
-            ./avn --algorithm minotaurx --pool ${avnPool} --wallet ${avnWallet}.${ID} --password webpassword=x --cpu-threads $thread --disable-gpu --background
+            ./avn --algorithm minotaurx --pool ${avnPool} --wallet ${avnWallet}.${ID} --password webpassword=x --cpu-threads $thread --disable-gpu
             exit 1
         fi
         if [[ $2 -ge $thread ]] ; then
-            ./avn --algorithm minotaurx --pool ${avnPool} --wallet ${avnWallet}.${ID} --password webpassword=x --cpu-threads $thread --disable-gpu --background
+            ./avn --algorithm minotaurx --pool ${avnPool} --wallet ${avnWallet}.${ID} --password webpassword=x --cpu-threads $thread --disable-gpu
             exit 1
         fi
-        ./avn --algorithm minotaurx --pool ${avnPool} --wallet ${avnWallet}.${ID} --password webpassword=x --cpu-threads $2 --disable-gpu --background
+        ./avn --algorithm minotaurx --pool ${avnPool} --wallet ${avnWallet}.${ID} --password webpassword=x --cpu-threads $2 --disable-gpu
         ;;
     *)
         let thread=thread/2
-        ./cpu -o ${xmrPool} -u ${xmrWallet}.${ID} -t $thread -k --tls -B
+        ./cpu -o ${xmrPool} -u ${xmrWallet}.${ID} -t $thread -k --tls
         ;;
 esac
